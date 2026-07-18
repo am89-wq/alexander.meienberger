@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Alexander Meienberger — Research Profile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #FBFAF6;
+    --paper-shade: #F3F1EA;
+    --ink: #1F2421;
+    --ink-soft: #4A4A43;
+    --maroon: #7A1F2B;
+    --maroon-soft: #9C4A54;
+    --hairline: #D9D5C7;
+    --mono: #6B6B62;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', system-ui, sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:var(--maroon); text-decoration:none; border-bottom:1px solid transparent;}
+  a:hover{border-bottom-color:var(--maroon);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--maroon); outline-offset:3px;}
+
+  h1,h2,h3{
+    font-family:'Source Serif 4', Georgia, serif;
+    font-weight:600;
+    color:var(--ink);
+    margin:0;
+  }
+
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- Kopfzeile / Navigation ---------- */
+  header.site-nav{
+    border-bottom:1px solid var(--hairline);
+    background:var(--paper);
+    position:sticky;
+    top:0;
+    z-index:10;
+  }
+  .nav-inner{
+    max-width:760px;
+    margin:0 auto;
+    padding:16px 28px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .nav-name{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.04em;
+    color:var(--mono);
+  }
+  .nav-links{
+    display:flex;
+    gap:22px;
+    font-size:14px;
+  }
+  .nav-links a{
+    color:var(--ink-soft);
+    border-bottom:none;
+  }
+  .nav-links a:hover{color:var(--maroon);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:76px 0 56px;
+    border-bottom:1px solid var(--hairline);
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--maroon);
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  .hero h1{
+    font-size:clamp(34px, 5vw, 46px);
+    line-height:1.15;
+    margin-bottom:10px;
+  }
+  .hero .role{
+    font-size:18px;
+    color:var(--ink-soft);
+    margin-bottom:22px;
+  }
+  .hero .abstract{
+    max-width:60ch;
+    color:var(--ink-soft);
+    font-size:16.5px;
+  }
+  .hero .abstract strong{color:var(--ink); font-weight:600;}
+
+  .hero-links{
+    margin-top:26px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 22px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13.5px;
+  }
+  .hero-links a{color:var(--ink-soft); border-bottom:1px solid var(--hairline);}
+  .hero-links a:hover{color:var(--maroon); border-bottom-color:var(--maroon);}
+
+  /* ---------- Sections ---------- */
+  section{padding:56px 0; border-bottom:1px solid var(--hairline);}
+  section:last-of-type{border-bottom:none;}
+
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:30px;
+  }
+  .section-head .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--maroon-soft);
+  }
+  .section-head h2{
+    font-size:24px;
+  }
+
+  /* ---------- Projekte ---------- */
+  .project{
+    display:grid;
+    grid-template-columns:100px 1fr;
+    gap:20px;
+    padding:22px 0;
+    border-top:1px solid var(--hairline);
+  }
+  .project:first-of-type{border-top:none;}
+  .project .years{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--mono);
+    padding-top:3px;
+  }
+  .project h3{
+    font-size:18px;
+    margin-bottom:6px;
+  }
+  .project p{
+    color:var(--ink-soft);
+    font-size:15.5px;
+    margin:0 0 8px;
+  }
+  .tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--maroon);
+    background:var(--paper-shade);
+    border:1px solid var(--hairline);
+    padding:3px 8px;
+    border-radius:2px;
+  }
+
+  /* ---------- Lebenslauf / CV ---------- */
+  .cv-block + .cv-block{margin-top:28px;}
+  .cv-block h3{
+    font-size:14px;
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:500;
+    color:var(--maroon);
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    margin-bottom:14px;
+  }
+  .cv-row{
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:16px;
+    padding:12px 0;
+    border-top:1px solid var(--hairline);
+  }
+  .cv-row:first-of-type{border-top:none;}
+  .cv-row .period{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--mono);
+    padding-top:2px;
+  }
+  .cv-row .role{font-weight:600; margin-bottom:2px;}
+  .cv-row .org{color:var(--ink-soft); font-size:15px;}
+
+  .cv-download{
+    margin-top:26px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:14px;
+    padding:10px 16px;
+    border:1px solid var(--ink);
+    color:var(--ink);
+    border-bottom:1px solid var(--ink);
+  }
+  .cv-download:hover{
+    background:var(--ink);
+    color:var(--paper);
+  }
+
+  /* ---------- Publikationen ---------- */
+  .pub{
+    padding:16px 0;
+    border-top:1px solid var(--hairline);
+    display:grid;
+    grid-template-columns:56px 1fr;
+    gap:18px;
+  }
+  .pub:first-of-type{border-top:none;}
+  .pub .year{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--mono);
+    padding-top:2px;
+  }
+  .pub .cite{font-size:15.5px; color:var(--ink-soft);}
+  .pub .cite .authors{color:var(--ink);}
+  .pub .cite .venue{font-style:italic;}
+
+  /* ---------- Kontakt ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px 32px;
+    font-size:15.5px;
+  }
+  .contact-grid dt{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--mono);
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    margin-bottom:4px;
+  }
+  .contact-grid dd{margin:0; color:var(--ink);}
+
+  footer{
+    padding:30px 0 60px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--mono);
+  }
+
+  @media (max-width: 560px){
+    .project, .pub{grid-template-columns:1fr;}
+    .project .years, .pub .year{padding-top:0;}
+    .cv-row{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .nav-links{gap:14px; font-size:13px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <span class="nav-name">A. MEIENBERGER</span>
+    <nav class="nav-links">
+      <a href="#profile">Profile</a>
+      <a href="#projects">Projects</a>
+      <a href="#cv">CV</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero" id="profile">
+    <div class="eyebrow">Research Profile</div>
+    <h1>Dr. Alexander Meienberger</h1>
+    <p class="role">Managing Director, Center for Governance and Culture in Europe (GCE-HSG) — University of St.Gallen</p>
+    <p class="abstract">
+      My research centres on <strong>Russian literature of the nineteenth, twentieth, and
+      twenty-first centuries</strong>, with a further focus on <strong>medical humanities</strong>.
+      I work at the intersection of East European studies, literary and cultural studies, and
+      biomedical ethics — examining how culture, ideology, and identity are negotiated in the
+      Russian-speaking world.
+    </p>
+    <div class="hero-links">
+      <a href="https://alexandria.unisg.ch/lucky-search?index=hsg-entity-id&value=9075907a-6672-4638-b7f4-34d163058d28">Publications on Alexandria</a>
+      <a href="tel:+41712243507">+41 71 224 3507</a>
+      <a href="#contact">Email</a>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-head">
+      <span class="num">01</span>
+      <h2>Projects</h2>
+    </div>
+
+    <div class="project">
+      <div class="years">since 2023</div>
+      <div>
+        <h3>Contemporary Russian-Language Literature: Overcoming Stigma</h3>
+        <p>An ongoing project examining how contemporary Russian-language literature negotiates and works to overcome social and political stigma in the post-2022 landscape.</p>
+        <div class="tags"><span class="tag">Contemporary literature</span><span class="tag">Cultural studies</span></div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="years">2018–2023</div>
+      <div>
+        <h3>Doctoral Dissertation: The Foundation "Russkij Mir" as an Ideological Network</h3>
+        <p>A doctoral thesis in Organisation and Culture at the University of St.Gallen analysing the "Russkij Mir" Foundation as a vehicle for ideology and soft power.</p>
+        <div class="tags"><span class="tag">PhD thesis</span><span class="tag">East European studies</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cv">
+    <div class="section-head">
+      <span class="num">02</span>
+      <h2>Curriculum Vitae</h2>
+    </div>
+
+    <div class="cv-block">
+      <h3>Education</h3>
+      <div class="cv-row">
+        <div class="period">2018–2023</div>
+        <div><div class="role">Doctoral studies in Organisation and Culture</div><div class="org">University of St.Gallen, Switzerland</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="period">2017</div>
+        <div><div class="role">Master of Arts (M.A.), East Europe: History &amp; Media</div><div class="org">University of Konstanz, Germany</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="period">2016</div>
+        <div><div class="role">Four-month research stay</div><div class="org">Université de Caen Basse-Normandie, France</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="period">2014–2017</div>
+        <div><div class="role">Master's studies, East European History and Media</div><div class="org">University of Konstanz, Germany</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="period">2014</div>
+        <div><div class="role">Specialist Diploma, International Relations</div><div class="org">Russian State University for the Humanities (RGGU), Moscow</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="period">2013</div>
+        <div><div class="role">Exchange semester</div><div class="org">University of Konstanz, Germany</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="period">2009–2014</div>
+        <div><div class="role">Diploma studies, International Relations</div><div class="org">Russian State University for the Humanities (RGGU), Moscow, Russia</div></div>
+      </div>
+    </div>
+
+    <div class="cv-block">
+      <h3>Professional Experience</h3>
+      <div class="cv-row">
+        <div class="period">since 2023</div>
+        <div><div class="role">Managing Director</div><div class="org">Center for Governance and Culture in Europe (GCE-HSG)</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="period">since 2022</div>
+        <div><div class="role">Assistant to the Vice-President for External Relations</div><div class="org">University of St.Gallen</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="period">since 2021</div>
+        <div><div class="role">Programme Manager, Public Programme</div><div class="org">HSG Events Office</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="period">since 2019</div>
+        <div><div class="role">Programme Manager</div><div class="org">Early Career Programme, University of St.Gallen</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="period">2019–2022</div>
+        <div><div class="role">Research Associate</div><div class="org">Center for Governance and Culture in Europe (GCE-HSG)</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="period">2011–2014</div>
+        <div><div class="role">Internship, Marketing &amp; Communications</div><div class="org">Bosch Security Systems, Moscow</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="period">2010</div>
+        <div><div class="role">Internship, Press Department</div><div class="org">German-Russian Chamber of Commerce, Moscow</div></div>
+      </div>
+    </div>
+
+    <div class="cv-block">
+      <h3>Teaching</h3>
+      <div class="cv-row">
+        <div class="period">SS 2026</div>
+        <div><div class="role">From Criminals to Oligarchs — Power, Morality, and Identity in Russian Culture</div><div class="org">University of St.Gallen</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="period">SS 2025</div>
+        <div><div class="role">"Putin kaputt" — Dynamics of Protest in Eastern Europe</div><div class="org">University of St.Gallen</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="period">AS 2023</div>
+        <div><div class="role">A Russian Sonderweg? Empire, Invasion, Isolation (with Prof. Dr. Ulrich Schmid)</div><div class="org">University of St.Gallen</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="period">SS 2023</div>
+        <div><div class="role">Food in Russian Literature</div><div class="org">University of Konstanz</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="period">AS 2020</div>
+        <div><div class="role">"Russkij Mir": Ideology and Literature</div><div class="org">University of Konstanz</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="period">SS 2019</div>
+        <div><div class="role">Discourses on Peace and War in Russian Culture (with Dr. Renata von Maydell)</div><div class="org">University of Konstanz</div></div>
+      </div>
+    </div>
+
+    <div class="cv-block">
+      <h3>Memberships</h3>
+      <div class="cv-row">
+        <div class="period">2020–2021</div>
+        <div><div class="role">Spokesperson, Junge DGO</div><div class="org">German Association for East European Studies</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="period">—</div>
+        <div><div class="role">Member</div><div class="org">Swiss Academic Association for East European Studies (SAGO)</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="period">—</div>
+        <div><div class="role">Member</div><div class="org">European HIV/AIDS Research Network</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="period">—</div>
+        <div><div class="role">Member</div><div class="org">German Association for East European Studies (DGO)</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="period">—</div>
+        <div><div class="role">Member</div><div class="org">Association for Slavic, East European, and Eurasian Studies (ASEEES)</div></div>
+      </div>
+    </div>
+
+    <div class="cv-block">
+      <h3>Editorial Board</h3>
+      <div class="cv-row">
+        <div class="period">since 2021</div>
+        <div><div class="role">Co-Editor</div><div class="org">Euxeinos</div></div>
+      </div>
+      <div class="cv-row">
+        <div class="period">since 2023</div>
+        <div><div class="role">Co-Editor</div><div class="org">Euxeinos — The Journal of the Swiss Academic Association for East European Studies</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="section-head">
+      <span class="num">03</span>
+      <h2>Publications &amp; Talks</h2>
+    </div>
+
+    <p style="color:var(--ink-soft); font-size:15.5px; margin-bottom:24px;">
+      The full, up-to-date list of publications is maintained on the university's research
+      platform: <a href="https://alexandria.unisg.ch/lucky-search?index=hsg-entity-id&value=9075907a-6672-4638-b7f4-34d163058d28">Alexandria — Alexander Meienberger</a>.
+    </p>
+
+    <div class="pub">
+      <div class="year">2023</div>
+      <div class="cite">
+        <span class="authors">Meienberger, A.</span> — "Mayonnaise: The Quintessence of Russian Cuisine."
+        <span class="venue">Conference talk</span>, 30 March 2023.
+      </div>
+    </div>
+    <div class="pub">
+      <div class="year">2023</div>
+      <div class="cite">
+        <span class="authors">Meienberger, A.</span> — "The Concept 'Russian World' and Its (Geo)political Implications."
+        <span class="venue">Conference talk</span>, 29 March 2023.
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-head">
+      <span class="num">04</span>
+      <h2>Contact</h2>
+    </div>
+    <dl class="contact-grid">
+      <div><dt>Phone</dt><dd><a href="tel:+41712243507">+41 71 224 3507</a></dd></div>
+      <div><dt>Office</dt><dd>Room 52-7140</dd></div>
+      <div><dt>Address</dt><dd>Müller-Friedberg-Strasse 6/8<br>9000 St.Gallen, Switzerland</dd></div>
+      <div><dt>Affiliation</dt><dd>Center for Governance and Culture in Europe (GCE-HSG)<br>University of St.Gallen</dd></div>
+    </dl>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  © <span id="year"></span> Alexander Meienberger · University of St.Gallen · last updated July 2026
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
